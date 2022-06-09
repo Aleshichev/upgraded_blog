@@ -21,7 +21,7 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route('/<int:n>')
+@app.route('/post<int:n>')
 def goto(n):
     cur_page = None
     num_image = ''
