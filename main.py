@@ -20,13 +20,16 @@ def about():
 def contact():
     return render_template("contact.html")
 
-@app.route('/post/<int:index>')
-def show_post(index):
-    # requested_post = None
-    for blog_post in all_posts:
-        if blog_post.id == index:
-            requested_post = blog_post
-    return render_template("post.html", post=requested_post)
+
+@app.route('/<int:n>')
+def goto(n):
+    cur_page = None
+    num_image = ''
+    for item in all_posts:
+        if item['id'] == n:
+            cur_page = item
+            num_image = str(item['id'])
+            return render_template('post.html', post=cur_page, image=num_image)
 
 
 if __name__ == "__main__":
